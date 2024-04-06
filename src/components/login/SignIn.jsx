@@ -1,0 +1,86 @@
+import { Eye, EyeOff } from 'lucide-react';
+import React, { useState } from 'react'
+
+const SignIn = (props) => {
+    const[loginUserDetails,setLoginUserDetails] = useState({email:"",password:""})
+
+    const[togglePassword,setTogglePassword] = useState(false);
+    const handleInputChange =(e)=>{
+        const{name,value} = e.target;
+        setLoginUserDetails((prev)=>{
+            return{
+                ...prev,
+                [name]:value,
+            }
+        })
+    }
+
+    const submitLogin = (e) =>{
+        e.preventDefault();
+        fetch(`https://api.escuelajs.co/api/v1/auth/login`,{
+            method:'POST',
+            headers:{
+                'Content-Type':"application/json"
+            },
+            body:JSON.stringify(loginUserDetails)
+        }).then(response=>{
+            if(response.ok){
+                response.json().then(data => {
+                    console.log("loginSuccessful", data); // Data should contain your tokens
+                    setLoginUserDetails({ name: "", password: "" });
+                    let tokens = {
+                        access_token:data?.access_token,
+                        refresh_token:data?.refresh_token
+                    }
+                    localStorage.setItem('tokenDetails',JSON.stringify(tokens))
+                    props?.setShowHome(true)
+                });
+            }else{
+                console.log("Error while Login")
+            }
+        }).catch(error=>{
+            console.log(error);
+        })
+    }
+    const showHidepassword =()=>{
+        setTogglePassword(!togglePassword);
+    }
+  return (
+    <div>
+        <div>
+            <h2>Sign in</h2>
+          </div>
+          <div className=''>
+              <form className='signIn-form-container' onSubmit={submitLogin}>
+              <label>Enter Email</label>
+                <div className='user-box'>
+                <input type='text'
+                name='email'
+                value={loginUserDetails?.name}
+                onChange={handleInputChange}
+                />
+                </div>
+
+                <label>Password</label>
+                <div className='d-flex user-box'>
+                <input type={togglePassword?"text":"password"}
+                name='password'
+                value={loginUserDetails?.password}
+                onChange={handleInputChange}
+                />
+                <div className='eye' onClick={showHidepassword}>
+                    {
+                        togglePassword?<Eye/>:<EyeOff/>
+                    }
+                
+                </div>
+                </div>
+                <button type='submit' className='sign-in-button'>Sign in</button>
+              <span onClick={()=>props?.setSignUp(true)}>New user? Create an Account</span>
+              </form>
+          </div>
+    </div>
+  )
+}
+
+export default SignIn;

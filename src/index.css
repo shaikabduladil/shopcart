@@ -1,0 +1,47 @@
+:root{
+    --bg-color:#fff;
+    --text-color:#333;
+    --card-body-bg:#d2d0cc;
+    --navbar-bg-color:#435585;
+    --nav-text-color:#fff;
+    --btn-hover-color:#000080;
+  
+}
+[data-theme="light"]{
+    --bg-color:#fff;
+    --text-color:#333;
+    --card-body-bg:#d2d0cc;
+    --navbar-bg-color:#435585;
+    --nav-text-color:#fff;
+}
+[data-theme="dark"]{
+    --bg-color:#333;
+    --text-color:#fff;
+    --card-body-bg:#435585;
+    --navbar-bg-color:#363062;
+    --nav-text-color:#fff;
+}
+.app-container{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+
+}
+
+#home-products .card-body{
+    background-color: var(--card-body-bg);
+}
+#navbar .navbar{
+    background-color: var(--navbar-bg-color);
+}
+#navbar .navbar-light .navbar-nav .nav-link{
+   color:var(--nav-text-color);
+}
+#navbar .btn-outline-success:hover{
+    color:var(--nav-text-color);
+    background-color: var(--btn-hover-color);
+}
+#navbar .btn-outline-success{
+    border: #fff;
+    color: var(--nav-text-color)
+}

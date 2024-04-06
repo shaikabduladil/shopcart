@@ -1,0 +1,31 @@
+    .login-banner-container{
+        width: 100%;
+    }
+    .login-banner-container img{
+        width: 100%;
+    }
+    .signIn-form-container, .signup-form-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .signIn-form-container input, .signup-form-container input{
+        width: 100%;
+        border: none;
+        outline: none;
+    }
+    .sign-in-button, .sign-up-button{
+        margin:1rem auto;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 5px;
+    }
+     .signIn-form-container span, .signup-form-container span{
+        text-align: end;
+        cursor: pointer;
+    }
+    .user-box{
+        border-bottom: 2px solid #333;
+    }
+    .user-box .eye{
+        cursor: pointer;
+    }
