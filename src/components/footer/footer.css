@@ -1,0 +1,11 @@
+.links-container ul li{
+    list-style: none;
+    cursor: pointer;
+}
+#footer .footer-copyright{
+    background-color: #363062;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    color: #e6e2e294;
+}

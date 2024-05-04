@@ -60,3 +60,25 @@
   background: #3a0ca3;
   transition: background 0s;
 }
+.product-card{
+  overflow-y: hidden;
+}
+@media(max-width:767px){
+  .card-body{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  .card-body-footer button{
+    padding:0px 5px;
+    font-size: 12px;
+  }
+  .card-title{
+    font-size: 14px;
+  }
+  .card-body-footer{
+    height: 24px;
+  }
+  .card-body-footer p{
+    font-size: 12px;
+  }
+}

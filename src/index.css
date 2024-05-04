@@ -5,6 +5,8 @@
     --navbar-bg-color:#435585;
     --nav-text-color:#fff;
     --btn-hover-color:#000080;
+    --headone-text-color:#fff;
+    --loader-color:#363062;
   
 }
 [data-theme="light"]{
@@ -13,6 +15,8 @@
     --card-body-bg:#d2d0cc;
     --navbar-bg-color:#435585;
     --nav-text-color:#fff;
+    --headone-text-color:#fff;
+    --loader-color:#363062;
 }
 [data-theme="dark"]{
     --bg-color:#333;
@@ -20,6 +24,11 @@
     --card-body-bg:#435585;
     --navbar-bg-color:#363062;
     --nav-text-color:#fff;
+    --headone-text-color:#fff;
+    --loader-color:#F5E8C7;
+}
+h1{
+    color: var(--headone-text-color);
 }
 .app-container{
     background-color: var(--bg-color);
@@ -45,3 +54,10 @@
     border: #fff;
     color: var(--nav-text-color)
 }
+#footer{
+    background-color: var(--navbar-bg-color);
+}
+.ringloader{
+    color:var( --loader-color);
+}
+

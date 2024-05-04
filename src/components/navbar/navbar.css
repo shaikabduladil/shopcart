@@ -1,3 +1,4 @@
+
 .log-out-btn {
   position: absolute;
   right: 50px;
@@ -25,13 +26,19 @@
 .mobile-view-search {
   display: none;
 }
+.desktop-search{
+  display: flex;
+}
 @media (max-width: 767px) {
   .nav-btns-container {
     display: none;
   }
   .mobile-view-logout,
   .mobile-view-search {
-    display: block;
+    display: flex;
+  }
+  .desktop-search{
+    display: none;
   }
   .logo-container {
     width: 70px;

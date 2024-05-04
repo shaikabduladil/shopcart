@@ -7,6 +7,10 @@ import ProductDetails from './components/productDetails/ProductDetails'
 import Cart from './components/cart/Cart'
 import { useEffect, useState } from 'react'
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
+import { Modal } from '@mui/material'
+import Loaderr from './components/Loader/Loaderr'
+
 
 function App() {
   const[showHome,setShowHome] = useState(false);
@@ -28,9 +32,10 @@ function App() {
       <Route path='/' element ={<Home showHome = {showHome} setShowHome = {setShowHome}/>}/>
       {/* <Route path='/login-signup' element={<Login/>}/> */}
       <Route path='/product-details/:id' element={<ProductDetails/>}/>
-      <Route path='/cart' element={<Cart/>}/>
+      {/* <Route path='/cart' element={<Cart/>}/> */}
   </Routes>
   </BrowserRouter>
+  {showHome?  <Footer/>:""}
   </div>
   )
 }

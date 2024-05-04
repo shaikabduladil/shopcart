@@ -1,0 +1,38 @@
+.details-image-container{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin: 0 auto;
+}
+.details-image-container img{
+    width: 100%;
+}
+.divider{
+    border-right: 2px solid grey;
+}
+.buttons-container{
+    display: flex;
+    gap: 1rem;
+}
+.buttons-container button{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.377) 4px 5px 8px,
+    #ffffff 1.5px 1.5px 2px 0px inset, #c7c3c0 -3.2px -3.2px 8px 0px inset;
+    transition: 0.1s ease-in-out;
+}
+.buttons-container button:active{
+    box-shadow: rgba(0, 0, 0, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #000000,
+    #c7c3c0 -3.2px -3.2px 8px 0px inset;
+}
+@media(max-width:767px){
+    .divider{
+        border-right:none;
+        border-bottom: 2px solid grey;
+    }
+    .buttons-container{
+        margin-bottom: 1rem;
+    }
+}

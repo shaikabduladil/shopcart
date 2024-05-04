@@ -4,24 +4,35 @@ import placeholderImage from "../../assets/images/placeholder.jpg";
 import "./home.css";
 import { Link } from "react-router-dom";
 import Login from "../login/Login";
+import Loaderr from "../Loader/Loaderr";
+import NoProductFound from "../noProductFound/NoProductFound";
 
 const Home = (props) => {
   const data = useContext(AppContext);
-  const { products } = data;
+  const { products,isLoading,setIsLoading } = data;
   let cartProducts = [];
 
   const onAddTocartClick = (newProduct) => {
-    cartProducts.push(newProduct);
-    localStorage.setItem("cartItems", JSON.stringify(cartProducts));
+    const existingCartProducts = JSON.parse(localStorage.getItem("cartItems"));
+    if(existingCartProducts&&existingCartProducts.length>0){
+      existingCartProducts.push(newProduct);
+      localStorage.setItem("cartItems",JSON.stringify(existingCartProducts))
+    }else{
+      cartProducts.push(newProduct);
+      localStorage.setItem("cartItems", JSON.stringify(cartProducts));
+    }
   };
 
   return (
     <>
+    {isLoading?<Loaderr/>:<>
       {props?.showHome ? (
         <section id="home-products">
           <div className="container">
-            <div className="row row-cols-1 row-cols-md-4 g-4">
-              {products?.map((product, index) => (
+              {products?.length>0? <>
+            <div className="row row-cols-2 row-cols-md-4 g-4">
+              {
+              products?.map((product, index) => (
                 <div className="col product-card" key={index}>
                   <div className="card h-100">
                     <Link to={`/product-details/${product.id}`}>
@@ -47,13 +58,20 @@ const Home = (props) => {
                   </div>
                 </div>
               ))}
-            </div>
+                </div>
+              </>
+              :<>
+              <NoProductFound/>
+              </>}
           </div>
         </section>
       ) : (
         <Login showHome={props?.showHome} setShowHome={props?.setShowHome} />
       )}
+    </>}
+    
     </>
+
   );
 };
 

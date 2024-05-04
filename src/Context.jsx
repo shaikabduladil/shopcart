@@ -6,6 +6,7 @@ const AppContext = React.createContext();
 const AppProvider = ({children}) =>{
     const [products,setProducts] = useState();
     const[darkMode,setDarkMode] = useState(false);
+    const[isLoading,setIsLoading] = useState(true);
     const toggleTheme = ()=>{
         setDarkMode(!darkMode)
         const rootElement = document.documentElement;
@@ -19,8 +20,13 @@ const AppProvider = ({children}) =>{
         const baseURL = import.meta.env.VITE_BaseURL;
         fetch(baseURL)
         .then((response)=>response.json())
-        .then((data)=>setProducts(data))
+        .then((data)=>{
+          setProducts(data)
+          localStorage.setItem("products",JSON.stringify(data));
+          setIsLoading(false);
+        })
+        .catch((error)=>console.log(error))
     },[])
-    return <AppContext.Provider value={{products,setProducts,darkMode,setDarkMode,toggleTheme}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{products,setProducts,darkMode,setDarkMode,toggleTheme,isLoading,setIsLoading}}>{children}</AppContext.Provider>
 }
 export  {AppProvider,AppContext};
