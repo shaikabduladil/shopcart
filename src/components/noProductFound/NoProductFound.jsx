@@ -1,5 +1,5 @@
 import React from 'react';
-import noProductImage from '../../assets/images/no-product-found.jpg';
+import noProductImage from '../../assets/images/no-product-found.png';
 
 const NoProductFound = () => {
   return (

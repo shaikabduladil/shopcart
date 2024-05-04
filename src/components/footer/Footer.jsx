@@ -8,7 +8,7 @@ const Footer = () => {
       <div className='container-fluid'>
         <div className='row'>
             <div className='col-md-4'>
-                <h1>Free Shop</h1>
+                <h1>My Choix</h1>
                 <div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sint distinctio iusto consequuntur, ex quod.</p>
                 </div>                
