@@ -2,3 +2,6 @@
     width: 100%;
     margin:0 auto;
 }
+.slider-image-container img{
+    width: 100%;
+}
