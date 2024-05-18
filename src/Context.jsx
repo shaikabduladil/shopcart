@@ -7,6 +7,7 @@ const AppProvider = ({children}) =>{
     const [products,setProducts] = useState();
     const[darkMode,setDarkMode] = useState(false);
     const[isLoading,setIsLoading] = useState(true);
+    const[showModal,setShowModal] = useState(false);
     const toggleTheme = ()=>{
         setDarkMode(!darkMode)
         const rootElement = document.documentElement;
@@ -27,6 +28,6 @@ const AppProvider = ({children}) =>{
         })
         .catch((error)=>console.log(error))
     },[])
-    return <AppContext.Provider value={{products,setProducts,darkMode,setDarkMode,toggleTheme,isLoading,setIsLoading}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{products,setProducts,darkMode,setDarkMode,toggleTheme,isLoading,setIsLoading,showModal,setShowModal}}>{children}</AppContext.Provider>
 }
 export  {AppProvider,AppContext};

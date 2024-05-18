@@ -8,8 +8,9 @@ import Cart from './components/cart/Cart'
 import { useEffect, useState } from 'react'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
-import { Modal } from '@mui/material'
 import Loaderr from './components/Loader/Loaderr'
+import Slider from './components/slider/Slider'
+import InfoModal from './components/Modal/InfoModal'
 
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
       {/* <Route path='/login-signup' element={<Login/>}/> */}
       <Route path='/product-details/:id' element={<ProductDetails/>}/>
       {/* <Route path='/cart' element={<Cart/>}/> */}
+      <Route path='/slider' element={<Slider/>}/>
+      <Route path="/info-model" element={<InfoModal/>}/>
   </Routes>
   </BrowserRouter>
   {showHome?  <Footer/>:""}

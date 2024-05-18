@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Login from "../login/Login";
 import Loaderr from "../Loader/Loaderr";
 import NoProductFound from "../noProductFound/NoProductFound";
+import Slider from "../slider/Slider";
 
 const Home = (props) => {
   const data = useContext(AppContext);
@@ -28,6 +29,7 @@ const Home = (props) => {
     {isLoading?<Loaderr/>:<>
       {props?.showHome ? (
         <section id="home-products">
+          <Slider/>
           <div className="container">
               {products?.length>0? <>
             <div className="row row-cols-2 row-cols-md-4 g-4">
