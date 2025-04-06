@@ -2,16 +2,21 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../../Context";
 import placeholderImage from "../../assets/images/placeholder.jpg";
 import "./home.css";
-import { Link } from "react-router-dom";
+import { Link ,Navigate, useNavigate} from "react-router-dom";
 import Login from "../login/Login";
 import Loaderr from "../Loader/Loaderr";
 import NoProductFound from "../noProductFound/NoProductFound";
 import Slider from "../slider/Slider";
 
 const Home = (props) => {
+  const navigate = useNavigate();
   const data = useContext(AppContext);
   const { products,isLoading,setIsLoading } = data;
   let cartProducts = [];
+  const[addedToCartIds,setAddedToCartIds] = useState(()=>{
+    const storedItems = JSON.parse(localStorage.getItem("cartItems"))||[]
+    return storedItems?.map((item)=>item.id);
+  })
 
   const onAddTocartClick = (newProduct) => {
     const existingCartProducts = JSON.parse(localStorage.getItem("cartItems"));
@@ -22,6 +27,7 @@ const Home = (props) => {
       cartProducts.push(newProduct);
       localStorage.setItem("cartItems", JSON.stringify(cartProducts));
     }
+    setAddedToCartIds([...addedToCartIds,newProduct.id])
   };
 
   return (
@@ -52,8 +58,9 @@ const Home = (props) => {
                       <h5 className="card-title">{product?.title}</h5>
                       <div className="card-body-footer d-flex">
                         <p className="card-text">${product?.price}.00</p>
-                        <button onClick={() => onAddTocartClick(product)}>
-                          Add to Cart
+                        <button 
+                        onClick={() =>addedToCartIds?.includes(product.id)?navigate("/cart"): onAddTocartClick(product)}>
+                         {addedToCartIds?.includes(product.id)?"Go to Cart": "Add to Cart"}
                         </button>
                       </div>
                     </div>

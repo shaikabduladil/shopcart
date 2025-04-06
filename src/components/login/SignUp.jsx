@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from "../../Context";
+import InfoModal from "../Modal/InfoModal";
 
 const SignUp = (props) => {
+  console.log(props,"signupprops");
     //test
     //test12123@gmail.com 
     //test123
+    const contextData = useContext(AppContext);
+
     const[userDetails,setUserDetails] = useState({name:"",email:"",password:"",avatar:"https://picsum.photos/800"});
-    console.log(userDetails,"userDetails");
     const handleInputChange =(e)=>{
         const{name,value} = e.target;
       setUserDetails((prev)=>{
@@ -24,7 +28,10 @@ const SignUp = (props) => {
             },
             body:JSON.stringify(userDetails)
         }).then(response=>{
+          console.log(response,"responsee");
             if(response.ok){
+              contextData?.setShowModal(true);
+              contextData?.setModalInfo("User Created Successfully");
                 console.log("data submitted successfully");
                 setUserDetails({
                     name:"",
@@ -32,6 +39,7 @@ const SignUp = (props) => {
                     password:"",
                     avatar:"https://picsum.photos/800",
                 })
+                
             }else{
                 console.log("Error while Submitting")
             }
@@ -40,7 +48,8 @@ const SignUp = (props) => {
         })
     }
   return (
-    <div>
+    <>{
+      contextData?.showModal?<InfoModal userCreated={true} setSignUp = {props?.setSignUp} />: <div>
       <div>
         <h2>Sign Up</h2>
       </div>
@@ -83,6 +92,10 @@ const SignUp = (props) => {
         </form>
       </div>
     </div>
+    }
+    
+   
+    </>
   );
 };
 

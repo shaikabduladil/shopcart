@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import "./navbar.css";
 import logo from "../../assets/images/i-con.png";
 import { AppContext } from "../../Context";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const { darkMode, setDarkMode, toggleTheme,products,setProducts } = useContext(AppContext);
@@ -24,9 +25,9 @@ const Navbar = (props) => {
         <nav className="navbar navbar-expand-lg navbar-light position-relative">
           <div className="container-fluid">
             <div className="logo-container">
-              <a className="navbar-brand" href="#">
+              <Link className="navbar-brand" to="/">
                 <img src={logo} />
-              </a>
+              </Link>
             </div>
             <form className=" mobile-view-search">
               <input
@@ -51,14 +52,14 @@ const Navbar = (props) => {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <Link className="nav-link active" aria-current="page" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/cart">
                     Cart
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
